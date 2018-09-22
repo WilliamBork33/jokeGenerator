@@ -58,6 +58,12 @@ function eventHandler(e) {
 
         // Run Function
         addJoke();
+
+        var jokesRef = firebase.database().ref("jokes/");
+
+        jokesRef.push({
+          joke: output
+        });
       }
     }
   };

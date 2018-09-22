@@ -33,7 +33,21 @@
         </div>
         <script src="app.js"></script>
 
+
         <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyBX4D96U_3ud_9HyDQgjR-o5u4Yc-fmbRM",
+                authDomain: "jokegenerator-268bf.firebaseapp.com",
+                databaseURL: "https://jokegenerator-268bf.firebaseio.com",
+                projectId: "jokegenerator-268bf",
+                storageBucket: "jokegenerator-268bf.appspot.com",
+                messagingSenderId: "17940441913"
+            };
+            firebase.initializeApp(config);
+            console.log("Firebase Initialized")
+        </script>
 
     </body>
 
