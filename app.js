@@ -38,10 +38,12 @@ $(document).ready(function() {
   /////////////////////////////////////////
 
   // Get Button Element and Register EventListener
-  document.getElementById("buton1").addEventListener("click", eventHandler);
+  document
+    .getElementById("buton1")
+    .addEventListener("click", eventHandlerStandardJoke);
 
   // Function to Load joke from API and display it
-  function eventHandler(e) {
+  function eventHandlerStandardJoke(e) {
     //////////////////////////////////////////
     // SELECT NUMBER OF JOKES FIELD & ACTION
     /////////////////////////////////////////
@@ -108,10 +110,12 @@ $(document).ready(function() {
   /////////////////////////////////////////
 
   // Get Button Element and Register EventListener
-  document.getElementById("buton2").addEventListener("click", eventHandler);
+  document
+    .getElementById("buton2")
+    .addEventListener("click", eventHandlerPersonalizedJoke);
 
   // Function to Load joke from API and display it
-  function eventHandler(e) {
+  function eventHandlerPersonalizedJoke(e) {
     //////////////////////////////////////////
     // SELECT NUMBER OF PERSONALIZED JOKES FIELD & ACTION
     /////////////////////////////////////////
@@ -119,8 +123,10 @@ $(document).ready(function() {
     // Capture User Number Input Value and Assign to Variable
     let numberOfJokes = document.getElementById("number").value;
 
-    John = "Billy";
-    Doe = "B";
+    John = document.getElementById("first-name").value;
+    console.log(John);
+    Doe = document.getElementById("last-name").value;
+    console.log(Doe);
 
     // Building URL to include the user input variable from above
     let URL2 =
@@ -131,7 +137,7 @@ $(document).ready(function() {
       "&amp;lastName=" +
       Doe;
 
-    console.log(URL2);
+    //console.log(URL2);
 
     // HTTP GET call to API to Retrieve JSON
     const xhr = new XMLHttpRequest();
@@ -141,8 +147,8 @@ $(document).ready(function() {
     // Function to GET, PARSE, and DISPLAY joke value
     xhr.onload = function() {
       if (this.status === 200) {
-        console.log("GET was got");
-        console.log(this.responseText);
+        //console.log("GET was got");
+        //console.log(this.responseText);
 
         // Parse JSON object
         let parsedJoke = JSON.parse(this.responseText);
