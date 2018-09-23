@@ -7,8 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <!-- Skeleton CSS Link -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
-
-        <title>Document</title>
+        <title>JokeGenerator</title>
     </head>
 
     <body>
@@ -31,12 +30,15 @@
             <!-- OUTPUT AREA -->
             <ul class="jokes" id="jokes"></ul>
         </div>
+
+        <!-- jQuery CDN Link -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+            crossorigin="anonymous"></script>
         <script src="app.js"></script>
-
-
+        <!-- Firebase Link & Config -->
         <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
         <script>
-            // Initialize Firebase
+            // Firebase Config
             var config = {
                 apiKey: "AIzaSyBX4D96U_3ud_9HyDQgjR-o5u4Yc-fmbRM",
                 authDomain: "jokegenerator-268bf.firebaseapp.com",
@@ -45,11 +47,11 @@
                 storageBucket: "jokegenerator-268bf.appspot.com",
                 messagingSenderId: "17940441913"
             };
+
+            // Initialize Firebase
             firebase.initializeApp(config);
-            console.log("Firebase Initialized")
+            //console.log("Firebase Initialized")
         </script>
-
     </body>
-
 
 </html>
