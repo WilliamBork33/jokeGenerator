@@ -25,7 +25,7 @@ $(document).ready(function() {
       // Builds Rows
       row.innerHTML = `<td>${
         joke.output
-      }</td><td><div><button class="button-primary" id="delete-btn">Delete</button></div></td>`;
+      }</td><td><button class="delete-one" id="buton-delete-one">Delete</button></td>`;
       list.appendChild(row);
     }
 
@@ -180,23 +180,38 @@ $(document).ready(function() {
 
     e.preventDefault();
   }
-
-  //////////////////////////////////////////
-  // DELETE ONE JOKE
-  /////////////////////////////////////////
-  document
-    .getElementsByClassName("button-primary")
-    .addEventListener("click", eventHandlerDeleteOne);
-
-  // Function to GET Joke from API and Display It
-  function eventHandlerDeleteOne(e) {
-    console.log("asdf");
-    e.preventDefault();
-  }
 });
 
 //////////////////////////////
-//DELETE ALL
+//DELETE ONE JOKE
+////////////////////////////////
+
+//Declare Const & Assign Delete Button
+const deleteOne = document.querySelector(".delete-one");
+
+//Register EventListener
+deleteOne.addEventListenerDeleteOne("click", function() {
+  let toDelete = document.querySelectorAll("td");
+
+  //Loop through array to delete all data
+  toDelete.forEach(function(element) {
+    element.remove();
+    console.log("Delete One");
+
+    //////////////////////////////////////////
+    // DELETE ONE JOKE FROM FIREBASE
+    /////////////////////////////////////////
+
+    // Reference Firebase
+    var jokesRef = firebase.database().ref("jokes/");
+
+    // Delete All Data From FireBase
+    jokesRef.remove();
+  });
+});
+
+//////////////////////////////
+//DELETE ALL JOKES
 ////////////////////////////////
 
 //Declare Const & Assign Delete Button
@@ -209,10 +224,9 @@ deleteAll.addEventListener("click", function() {
   //Loop through array to delete all data
   toDelete.forEach(function(element) {
     element.remove();
-    console.log("asdf");
 
     //////////////////////////////////////////
-    // DELETE JOKES FROM FIREBASE
+    // DELETE ALL JOKES FROM FIREBASE
     /////////////////////////////////////////
 
     // Reference Firebase
