@@ -3,7 +3,7 @@ $(document).ready(function() {
   // console.log("Page loaded");
 
   //////////////////////////////////////////
-  // READ JOKES FROM FIREBASE DTABASE
+  // READ JOKES FROM FIREBASE DATABASE
   /////////////////////////////////////////
 
   // Reference Firebase
@@ -25,7 +25,7 @@ $(document).ready(function() {
       // Builds Rows
       row.innerHTML = `<td>${
         joke.output
-      }</td><td><a href="#" class="delete">X</a><button class="button-primary" id="delete-btn">Button element</button></td>`;
+      }</td><td><div><button class="button-primary" id="delete-btn">Delete</button></div></td>`;
       list.appendChild(row);
     }
 
@@ -42,10 +42,10 @@ $(document).ready(function() {
     .getElementById("buton1")
     .addEventListener("click", eventHandlerStandardJoke);
 
-  // Function to Load joke from API and display it
+  // Function to GET Joke from API and Display It
   function eventHandlerStandardJoke(e) {
     //////////////////////////////////////////
-    // SELECT NUMBER OF JOKES FIELD & ACTION
+    // GRAB VALUE IN NUMBER OF JOKES FIELD / BUILD URL / HTTP GET REQUEST
     /////////////////////////////////////////
 
     // Capture User Number Input Value and Assign to Variable
@@ -58,7 +58,6 @@ $(document).ready(function() {
     // HTTP GET call to API to Retrieve JSON
     const xhr = new XMLHttpRequest();
     xhr.open("GET", URL, true);
-    //console.log("Button Pressed");
 
     // Function to GET, PARSE, and DISPLAY joke value
     xhr.onload = function() {
@@ -72,11 +71,11 @@ $(document).ready(function() {
 
         // FOR LOOP to Interate Through Parsed Array
         for (i = 0; i < parsedJoke.value.length; i++) {
-          // Declare Let and Assign Indexed Value of Jokevalue of the joke text
+          // Declare Let and Assign Indexed Value of Value of the Joke
           let joke = parsedJoke.value[i].joke;
           //console.log(joke);
 
-          // Declare Let and Assign it value of "joke"
+          // Declare Let and Assign it Value of "joke"
           let output = joke;
 
           //////////////////////////////////////////
@@ -114,21 +113,21 @@ $(document).ready(function() {
     .getElementById("buton2")
     .addEventListener("click", eventHandlerPersonalizedJoke);
 
-  // Function to Load joke from API and display it
+  // Function to GET Joke from API and Display It
   function eventHandlerPersonalizedJoke(e) {
     //////////////////////////////////////////
-    // SELECT NUMBER OF PERSONALIZED JOKES FIELD & ACTION
+    // GRAB VALUE IN NUMBER OF PERSONALIZED JOKES FIELD / BUILD URL / HTTP GET REQUEST
     /////////////////////////////////////////
 
     // Capture User Number Input Value and Assign to Variable
     let numberOfJokes = document.getElementById("number").value;
 
     John = document.getElementById("first-name").value;
-    console.log(John);
+    //console.log(John);
     Doe = document.getElementById("last-name").value;
-    console.log(Doe);
+    //console.log(Doe);
 
-    // Building URL to include the user input variable from above
+    // Building URL to Include User Input Variable
     let URL2 =
       "http://api.icndb.com/jokes/random/" +
       numberOfJokes +
@@ -142,25 +141,24 @@ $(document).ready(function() {
     // HTTP GET call to API to Retrieve JSON
     const xhr = new XMLHttpRequest();
     xhr.open("GET", URL2, true);
-    //console.log("Button Pressed");
 
-    // Function to GET, PARSE, and DISPLAY joke value
+    // Function to GET, PARSE, and DISPLAY Joke Value
     xhr.onload = function() {
       if (this.status === 200) {
         //console.log("GET was got");
         //console.log(this.responseText);
 
-        // Parse JSON object
+        // Parse JSON Object
         let parsedJoke = JSON.parse(this.responseText);
-        console.log(parsedJoke);
+        //console.log(parsedJoke);
 
         // FOR LOOP to Interate Through Parsed Array
         for (i = 0; i < parsedJoke.value.length; i++) {
-          // Declare Let and Assign Indexed Value of Jokevalue of the joke text
+          // Declare Let and Assign Indexed Value of Value of the Joke
           let joke = parsedJoke.value[i].joke;
-          console.log(joke);
+          //console.log(joke);
 
-          // Declare Let and Assign it value of "joke"
+          // Declare Let and Assign it Value of "joke"
           let output = joke;
 
           //////////////////////////////////////////
@@ -182,4 +180,45 @@ $(document).ready(function() {
 
     e.preventDefault();
   }
+
+  //////////////////////////////////////////
+  // DELETE ONE JOKE
+  /////////////////////////////////////////
+  document
+    .getElementsByClassName("button-primary")
+    .addEventListener("click", eventHandlerDeleteOne);
+
+  // Function to GET Joke from API and Display It
+  function eventHandlerDeleteOne(e) {
+    console.log("asdf");
+    e.preventDefault();
+  }
+});
+
+//////////////////////////////
+//DELETE ALL
+////////////////////////////////
+
+//Declare Const & Assign Delete Button
+const deleteAll = document.querySelector(".delete-all");
+
+//Register EventListener
+deleteAll.addEventListener("click", function() {
+  let toDelete = document.querySelectorAll("td");
+
+  //Loop through array to delete all data
+  toDelete.forEach(function(element) {
+    element.remove();
+    console.log("asdf");
+
+    //////////////////////////////////////////
+    // DELETE JOKES FROM FIREBASE
+    /////////////////////////////////////////
+
+    // Reference Firebase
+    var jokesRef = firebase.database().ref("jokes/");
+
+    // Delete All Data From FireBase
+    jokesRef.remove();
+  });
 });
