@@ -1,0 +1,38 @@
+.preloader-wrapper {
+  display: none;
+}
+
+h2 {
+  color: whitesmoke;
+}
+
+#number {
+  font-size: 18px;
+}
+
+#lable-input {
+  font-size: 18px;
+}
+
+.jokes {
+  color: whitesmoke;
+  background-color: black;
+  opacity: 0.7;
+}
+
+.button {
+  background-color: whitesmoke;
+}
+
+#buton1,
+#buton2 {
+  background-color: whitesmoke;
+}
+
+.delete-one {
+  background-color: whitesmoke;
+}
+
+#buton-delete {
+  background-color: whitesmoke;
+}

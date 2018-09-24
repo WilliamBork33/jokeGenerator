@@ -1,6 +1,14 @@
 // jQuery to Make All JS Wait to Run Until After Page Loads
 $(document).ready(function() {
-  // console.log("Page loaded");
+  //console.log("Page loaded");
+
+  //////////////////////////////////////////
+  // PRE-LOADING API EFFECT
+  /////////////////////////////////////////
+
+  $(document).ready(function() {
+    $(".preloader-wrapper").css("display", "none");
+  });
 
   //////////////////////////////////////////
   // READ JOKES FROM FIREBASE DATABASE
@@ -47,6 +55,20 @@ $(document).ready(function() {
     //////////////////////////////////////////
     // GRAB VALUE IN NUMBER OF JOKES FIELD / BUILD URL / HTTP GET REQUEST
     /////////////////////////////////////////
+
+    //////////////////////////////////////////
+    // DISPLAY /HIDE LOADING EFFECT
+    /////////////////////////////////////////
+
+    // Show Loading Effect
+    $(document).ready(function() {
+      $(".preloader-wrapper").show();
+    });
+
+    // Remove Loading Effect
+    setTimeout(function() {
+      $(".preloader-wrapper").remove();
+    }, 2000);
 
     // Capture User Number Input Value and Assign to Variable
     let numberOfJokes = document.getElementById("number").value;
@@ -97,13 +119,7 @@ $(document).ready(function() {
 
     e.preventDefault();
   }
-  /* 
-  
-  Projecto: Modificar el acceso al API de ChuckNorris para aceptar Nombre y Apellido
-  y generar chistes con el nombre y apellido indicados
-  Adicionalmente usar Materialize CSS
-  y, que se pongan creativos con la pagina
- */
+
   //////////////////////////////////////////
   // NEW PERSONLIZED JOKE BUTTON & ACTION
   /////////////////////////////////////////
@@ -118,6 +134,20 @@ $(document).ready(function() {
     //////////////////////////////////////////
     // GRAB VALUE IN NUMBER OF PERSONALIZED JOKES FIELD / BUILD URL / HTTP GET REQUEST
     /////////////////////////////////////////
+
+    //////////////////////////////////////////
+    // DISPLAY / HIDE LOADING EFFECT
+    /////////////////////////////////////////
+
+    // Show Loading Effect
+    $(document).ready(function() {
+      $(".preloader-wrapper").show();
+    });
+
+    // Remove Loading Effect
+    setTimeout(function() {
+      $(".preloader-wrapper").remove();
+    }, 2000);
 
     // Capture User Number Input Value and Assign to Variable
     let numberOfJokes = document.getElementById("number").value;
@@ -185,6 +215,9 @@ $(document).ready(function() {
 //////////////////////////////
 //DELETE ONE JOKE
 ////////////////////////////////
+
+// TO FIX
+
 /* 
 //Declare Const & Assign Delete Button
 const deleteOne = document.querySelector(".delete-one");
