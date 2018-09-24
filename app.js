@@ -52,8 +52,8 @@ $(document).ready(function() {
     let numberOfJokes = document.getElementById("number").value;
 
     // Building URL Which Includes numberofJokes Variable
-    let URL = "http://api.icndb.com/jokes/random" + "/" + numberOfJokes;
-    console.log(URL);
+    let URL = "https://api.icndb.com/jokes/random" + "/" + numberOfJokes;
+    //console.log(URL);
 
     // HTTP GET call to API to Retrieve JSON
     const xhr = new XMLHttpRequest();
@@ -129,7 +129,7 @@ $(document).ready(function() {
 
     // Building URL to Include User Input Variable
     let URL2 =
-      "http://api.icndb.com/jokes/random/" +
+      "https://api.icndb.com/jokes/random/" +
       numberOfJokes +
       "?firstName=" +
       John +
@@ -185,7 +185,7 @@ $(document).ready(function() {
 //////////////////////////////
 //DELETE ONE JOKE
 ////////////////////////////////
-
+/* 
 //Declare Const & Assign Delete Button
 const deleteOne = document.querySelector(".delete-one");
 
@@ -209,7 +209,7 @@ deleteOne.addEventListenerDeleteOne("click", function() {
     jokesRef.remove();
   });
 });
-
+ */
 //////////////////////////////
 //DELETE ALL JOKES
 ////////////////////////////////
